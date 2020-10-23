@@ -14,7 +14,7 @@ Project was created with:
 * Python 3.6
 
 ## How to Use
-Just import bravais and type bravais.Bravais2D(). This will generate the scatter plot with the default values.  
+Just import bravais and type bravais.Bravais2D(). This will generate a scatter plot with the default values.  
 Here are all the arguments for Bravais2D:
 * a: (float) The magnitude of the first primitive vector (default is 1.0).
 * b: (float) The magnitude of the second primitive vector (default is 1.0).
