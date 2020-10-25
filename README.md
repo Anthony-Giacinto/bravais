@@ -4,6 +4,7 @@ Plots 2D Bravais lattices.
 ## Table of Contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Examples](#examples)
 * [How to Use](#how-to-use)
 
 ## General Info
@@ -13,8 +14,13 @@ Uses the magnitudes of two primitive vectors and the angle between them to gener
 Project was created with:
 * Python 3.6
 
+## Examples
+    from bravais import bravais
+
+    bravais.Bravais2D()
+
 ## How to Use
-Just import bravais and type bravais.Bravais2D(). This will generate a scatter plot with the default values.  
+Just import bravais and run the Bravais2D class.  
 Here are all the arguments for Bravais2D:
 * a: (float) The magnitude of the first primitive vector (default is 1.0).
 * b: (float) The magnitude of the second primitive vector (default is 1.0).
