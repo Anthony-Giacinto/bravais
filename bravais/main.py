@@ -18,7 +18,7 @@ class Bravais2D:
         a: (float) The magnitude of the first primitive vector (default is 1.0).
         b: (float) The magnitude of the second primitive vector (default is 1.0).
         angle: (float) The angle between the two primitive vectors; can't be 0 or 180 degrees (default is 90.0).
-        degrees: (bool) If true, angle is in degrees and if False, angle is in radians (default is True).
+        degrees: (bool) If True, the angles are in degrees and if False, the angles are in radians (default is True).
         centered: (bool) True if the lattice is a centered rectangular (default is False).
         numpoints: (int) The number of desired points to plot and must be a square number larger than 4;
         will be the number of 'non-centered' points if centered rectangular lattice (default is 25).
@@ -33,7 +33,8 @@ class Bravais2D:
         :param a: (float) The magnitude of the first primitive vector (default is 1.0).
         :param b: (float) The magnitude of the second primitive vector (default is 1.0).
         :param angle: (float) The angle between the two primitive vectors; can't be 0 or 180 degrees (default is 90.0).
-        :param degrees: (bool) If true, angle is in degrees and if False, angle is in radians (default is True).
+        :param degrees: (bool) If True, the angles are in degrees and if False, the angles are in radians
+        (default is True).
         :param centered: (bool) True if the lattice is a centered rectangular (default is False).
         :param numpoints: (int) The number of desired points to plot and must be a square number larger than 4;
         will be the number of 'non-centered' points if centered rectangular lattice (default is 25).
@@ -50,10 +51,12 @@ class Bravais2D:
     @property
     def angle(self):
         if self.degrees:
-            self._angle = math.radians(self._angle)
-        if self._angle == 0.0 or self._angle == math.pi:
+            angle = math.radians(self._angle)
+        else:
+            angle = self._angle
+        if angle == 0.0 or angle == math.pi:
             raise Exception('The angle must not be 0 or 180 degrees.')
-        return self._angle
+        return angle
 
     @property
     def _a_vec(self):
