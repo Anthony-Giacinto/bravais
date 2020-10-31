@@ -50,16 +50,10 @@ class Bravais2D:
     @property
     def angle(self):
         if self.degrees:
-            angle = math.radians(self._angle)
-            if angle == 0 or angle == math.pi:
-                raise Exception('The angle must not be 0 or 180 degrees.')
-            else:
-                return angle
-        else:
-            if self._angle == 0 or self._angle == math.pi:
-                raise Exception('The angle must not be 0 or 180 degrees.')
-            else:
-                return self._angle
+            self._angle = math.radians(self._angle)
+        if self._angle == 0.0 or self._angle == math.pi:
+            raise Exception('The angle must not be 0 or 180 degrees.')
+        return self._angle
 
     @property
     def _a_vec(self):
