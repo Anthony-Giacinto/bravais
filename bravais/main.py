@@ -22,13 +22,16 @@ class Bravais2D:
         centered: (bool) True if the lattice is a centered rectangular (default is False).
         numpoints: (int) The number of desired points to plot and must be a square number larger than 4;
         will be the number of 'non-centered' points if centered rectangular lattice (default is 25).
+        plot: (bool) If True, will plot the lattice (default is True).
+        a_vec: (numpy array) The first primitive vector.
+        b_vec: (numpy array) The second primitive vector.
         lattice: (str) The name of the type of Bravais lattice (depends on a, b, angle, and centered).
 
     Functions:
         plot: Creates a 2D scatter plot.
     """
 
-    def __init__(self, a=1.0, b=1.0, angle=90.0, degrees=True, centered=False, numpoints=25):
+    def __init__(self, a=1.0, b=1.0, angle=90.0, degrees=True, centered=False, numpoints=25, plot=True):
         """
         :param a: (float) The magnitude of the first primitive vector (default is 1.0).
         :param b: (float) The magnitude of the second primitive vector (default is 1.0).
@@ -38,6 +41,7 @@ class Bravais2D:
         :param centered: (bool) True if the lattice is a centered rectangular (default is False).
         :param numpoints: (int) The number of desired points to plot and must be a square number larger than 4;
         will be the number of 'non-centered' points if centered rectangular lattice (default is 25).
+        :param plot: (bool) If True, will plot the lattice (default is True).
         """
 
         self.a = np.abs(a)
@@ -46,7 +50,7 @@ class Bravais2D:
         self.centered = centered
         self._numpoints = numpoints
         self._angle = angle
-        self.plot()
+        if plot: self.plot()
 
     @property
     def angle(self):
@@ -59,11 +63,11 @@ class Bravais2D:
         return angle
 
     @property
-    def _a_vec(self):
+    def a_vec(self):
         return np.array([self.a, 0])
 
     @property
-    def _b_vec(self):
+    def b_vec(self):
         return np.array([self.a*self.b*math.cos(self.angle), self.b*math.sin(self.angle)])
 
     @property
@@ -101,7 +105,7 @@ class Bravais2D:
 
         for j in np.arange(start, stop):
             for i in np.arange(start, stop):
-                vec = i*self._a_vec + j*self._b_vec
+                vec = i*self.a_vec + j*self.b_vec
                 x.append(vec[0])
                 y.append(vec[1])
         return x, y
