@@ -92,32 +92,41 @@ class Bravais2D:
         else:
             raise Exception('numpoints must be a square number larger than 4.')
 
-    def __find_array(self):
-        r_array = []
-        x_array = []
-        y_array = []
+    def __append_points(self, start, stop, x, y):
+        """ Appends x and y coordinates of the lattice to two lists.
+
+        :param start: (float) The start of np.arange.
+        :param stop: (float) The end of np.arange.
+        :param x: (list) The list of x values.
+        :param y: (list) The list of y values.
+        :return: (list(list)) x, y
+        """
+
+        for j in np.arange(start, stop):
+            for i in np.arange(start, stop):
+                vec = i*self._a_vec + j*self._b_vec
+                x.append(vec[0])
+                y.append(vec[1])
+        return x, y
+
+    def __find_points(self):
+        """ Finds all the x and y coordinates of the lattice.
+
+        :return: (list(list)) x, y
+        """
+
         p = int(self.numpoints**0.5)
-        for y in range(p):
-            for x in range(p):
-                r_array.append(x*self._a_vec + y*self._b_vec)
+        points = self.__append_points(0, p, [], [])
         if self.centered:
-            inner_p = p - 1
-            for y in np.arange(0.5, inner_p):
-                for x in np.arange(0.5, inner_p):
-                    r_array.append(x*self._a_vec + y*self._b_vec)
-        for i in range(len(r_array)):
-            r_array[i] = r_array[i].tolist()
-        for item in r_array:
-            x_array.append(item[0])
-            y_array.append(item[1])
-        return x_array, y_array
+            points = self.__append_points(0.5, p - 1, points[0], points[1])
+        return points[0], points[1]
 
     def plot(self):
         """ Creates a 2D scatter plot. """
 
-        arr = self.__find_array()
+        p = self.__find_points()
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.scatter(arr[0], arr[1])
+        ax.scatter(p[0], p[1])
         ax.set_title('Bravais Lattice:\n' + self.lattice)
         plt.show()
