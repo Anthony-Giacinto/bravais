@@ -3,15 +3,13 @@ Plots 2D Bravais lattices.
 
 ## Table of Contents
 * [General info](#general-info)
-* [Screenshot](#screenshot)
 * [Technologies](#technologies)
 * [Examples](#examples)
 * [How to Use](#how-to-use)
 
 ## General Info
-Uses the magnitudes of two primitive vectors and the angle between them to generate a scatter plot of the 2D bravais lattice in matplotlib.
+Uses the magnitudes of two primitive vectors and the angle between them to generate a scatter plot of the 2D bravais lattice in matplotlib.  
 
-## Screenshot
 ![lattice](/screenshot/lattice.PNG)
 
 ## Technologies
