@@ -120,6 +120,13 @@ class Bravais2D:
         return x, y
 
     def __unit_cell(self, x, y):
+        """ Finds the x and y coordinates for the unit cell.
+
+        :param x: (list) The x coordinates of the lattice points.
+        :param y: (list) The y coordinates of the lattice points.
+        :return: (list(list()) x, y
+        """
+
         root = int(self.numpoints**0.5)
         return (x[0], x[1], x[1+root], x[root], x[0]), (y[0], y[1], y[1+root], y[root], y[0])
 
@@ -130,11 +137,11 @@ class Bravais2D:
         fig = plt.figure()
         ax = fig.add_subplot(111)
         if self.degrees:
-            angle = self._angle
+            angle = str(self._angle)
         else:
-            angle = math.degrees(self.angle)
+            angle = str(math.degrees(self.angle))
         title = "Bravais Lattice: " + self.lattice
-        variables = "\n|a| = " + str(self.a) + ", |b| = " + str(self.b) + ", \u03b8  =  " + str(angle) + "\u00b0"
+        variables = "\n|a| = " + str(self.a) + ", |b| = " + str(self.b) + ", \u03b8  =  " + angle + "\u00b0"
         scaling = "\n(Axes may be scaled differently)"
         ax.set_title(title + variables + scaling)
         ax.scatter(x, y, label="Lattice Points")
