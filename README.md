@@ -12,7 +12,7 @@ Plots 2D Bravais lattices.
 Uses the magnitudes of two primitive vectors and the angle between them to generate a scatter plot of the 2D bravais lattice in matplotlib.
 
 ## Screenshot
-![lattice](/screenshot/lattice.png)
+![lattice](/screenshot/lattice.PNG)
 
 ## Technologies
 Project was created with:
