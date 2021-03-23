@@ -17,11 +17,11 @@ class Bravais2D:
     Instance Attributes:
         a: (float) The magnitude of the first primitive vector (default is 1.0).
         b: (float) The magnitude of the second primitive vector (default is 1.0).
-        angle: (float) The angle between the two primitive vectors; can't be 0 or 180 degrees (default is 90.0).
+        angle: (float) The angle between the two primitive vectors; can't be 0 or 180 degrees (default is 120.0).
         degrees: (bool) If True, the angles are in degrees and if False, the angles are in radians (default is True).
         centered: (bool) True if the lattice is a centered rectangular (default is False).
         numpoints: (int) The number of desired points to plot and must be a square number larger than 4;
-        will be the number of 'non-centered' points if centered rectangular lattice (default is 25).
+        will be the number of 'non-centered' points if centered rectangular lattice (default is 16).
         plot: (bool) If True, will plot the lattice (default is True).
         a_vec: (numpy array) The first primitive vector.
         b_vec: (numpy array) The second primitive vector.
@@ -32,7 +32,7 @@ class Bravais2D:
         plot: Creates a 2D scatter plot.
     """
 
-    def __init__(self, a=1.0, b=1.0, angle=90.0, degrees=True, centered=False, numpoints=16, plot=True):
+    def __init__(self, a=1.0, b=1.0, angle=120.0, degrees=True, centered=False, numpoints=16, plot=True):
         """
         :param a: (float) The magnitude of the first primitive vector (default is 1.0).
         :param b: (float) The magnitude of the second primitive vector (default is 1.0).
