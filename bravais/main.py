@@ -129,7 +129,14 @@ class Bravais2D:
         x, y = self.__find_points()
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.set_title("Bravais Lattice:\n" + self.lattice + "\n(Axes may be scaled differently)")
+        if self.degrees:
+            angle = self._angle
+        else:
+            angle = math.degrees(self.angle)
+        title = "Bravais Lattice: " + self.lattice
+        variables = "\n|a| = " + str(self.a) + ", |b| = " + str(self.b) + ", \u03b8  =  " + str(angle) + "\u00b0"
+        scaling = "\n(Axes may be scaled differently)"
+        ax.set_title(title + variables + scaling)
         ax.scatter(x, y, label="Lattice Points")
         ax.plot(*self.__unit_cell(x, y), color="darkorange", label="Unit Cell")
         plt.legend(loc="best").set_draggable(True)
